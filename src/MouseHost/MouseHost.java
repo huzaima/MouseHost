@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package MouseHost;
 
 import java.awt.AWTException;
@@ -11,6 +6,7 @@ import java.awt.MouseInfo;
 import java.awt.Point;
 import java.awt.Robot;
 import java.awt.Toolkit;
+import java.awt.event.InputEvent;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -24,13 +20,7 @@ import java.util.Scanner;
  */
 public class MouseHost {
 
-    /**
-     * @param args the command line arguments
-     * @throws java.io.IOException
-     * @throws java.awt.AWTException
-     */
     public static void main(String[] args) throws IOException, AWTException {
-        // TODO code application logic here
 
         Point p;
         int x, y, read;
@@ -72,6 +62,14 @@ public class MouseHost {
                 case 4:
                     if(x<screenSize.width)
                         robot.mouseMove(x=x+sensitivity, y);
+                    break;
+                case 5:
+                    robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+                    robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+                    break;
+                case 6:
+                    robot.mousePress(InputEvent.BUTTON3_DOWN_MASK);
+                    robot.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
                     break;
             }
         }
